@@ -587,10 +587,6 @@ Provide a simple dashboard that calls the model endpoint and renders risk for a 
 - **Model**: F1 (High), ROC‑AUC, reliability slope; confusion over flood categories addressed via NWPS.
 - **Teaching**: student completion rate of labs, quiz on interpreting NWM/HRRR inputs and NWPS labels.
 
-## Need Professional Help in Developing Your Architecture?
-
-Please contact me at [sammuti.com](https://sammuti.com) :)
-
 ## Code Bundle (MVP Demo)
 
 > Drop these files into a repo (e.g., `epic-epic-demo/`) and adjust bucket/endpoint names as needed. All containers and pipelines are CPU‑only.
