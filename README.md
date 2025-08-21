@@ -1,5 +1,8 @@
 # NOAA-AI-MVP
 
+--- READ THE TECHNICAL DOCUMENTATION --  
+** README Technical** in `/docs/TECHNICAL.md`
+----------------------------------------
 EPIC-aligned AI on Red Hat OpenShift: ingest NOAA NWM/HRRR, train XGBoost, serve via KServe.
 
 ## Quickstart
