@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: epic-noaa-etl-
+  namespace: epic-ai
+spec:
+  pipelineRef: {name: epic-noaa-etl}
+  params:
+    - name: cycle_utc
+      value: "2025-08-21T12:00:00Z"
+    - name: odf_bucket
+      value: epic-demo-odf
+  timeouts:
+    pipeline: 1h0m0s

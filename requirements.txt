@@ -1,0 +1,16 @@
+xarray
+s3fs
+fsspec
+cfgrib
+eccodes
+zarr
+netcdf4
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+fastapi
+uvicorn
+boto3
+pyarrow

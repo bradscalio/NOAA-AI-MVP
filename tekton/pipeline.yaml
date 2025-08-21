@@ -1,0 +1,35 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: epic-noaa-etl
+  namespace: epic-ai
+spec:
+  params:
+    - name: cycle_utc
+      type: string
+      description: NWP cycle like 2025-08-21T12:00:00Z
+    - name: odf_bucket
+      type: string
+      default: epic-demo-odf
+  tasks:
+    - name: ingest-noaa
+      taskSpec:
+        params: [{name: cycle_utc, type: string},{name: odf_bucket, type: string}]
+        steps:
+          - name: ingest
+            image: quay.io/<org>/noaa-etl:latest
+            envFrom:
+              - secretRef: {name: odf-epic-bucket}
+            script: |
+              python /app/ingest_noaa.py --cycle $(params.cycle_utc) --odf-bucket $(params.odf_bucket)
+    - name: build-features
+      runAfter: [ingest-noaa]
+      taskSpec:
+        params: [{name: cycle_utc, type: string},{name: odf_bucket, type: string}]
+        steps:
+          - name: features
+            image: quay.io/<org>/noaa-etl:latest
+            envFrom:
+              - secretRef: {name: odf-epic-bucket}
+            script: |
+              python /app/build_features.py --cycle $(params.cycle_utc) --bucket $(params.odf_bucket) --gauge-id FGON8

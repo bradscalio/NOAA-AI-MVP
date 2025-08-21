@@ -1,0 +1,23 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: noaa.nwm.short_range.ingested
+  namespace: epic-ai
+  labels: {strimzi.io/cluster: epic-kafka}
+spec: {partitions: 3, replicas: 3}
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: noaa.hrrr.precip.ingested
+  namespace: epic-ai
+  labels: {strimzi.io/cluster: epic-kafka}
+spec: {partitions: 3, replicas: 3}
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: features.streamflowrisk.ready
+  namespace: epic-ai
+  labels: {strimzi.io/cluster: epic-kafka}
+spec: {partitions: 3, replicas: 3}
